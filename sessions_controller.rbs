@@ -1,0 +1,43 @@
+module Devise
+  class SessionsController < DeviseController
+    def sign_in_params: () -> Hash[untyped, untyped]
+  end
+end
+
+class DeviseController < ApplicationController  # Devise.parent_controller で差し替え可能
+  def find_message: (String | Symbol kind, ?Hash[untyped, untyped] options) -> String
+  def navigational_formats: () -> Array[Mime::Type]
+  def resource: () -> Staff
+  def resource=: (Staff) -> Staff
+  def resource_class: () -> singleton(Staff)
+  def resource_name: () -> Symbol
+end
+
+module Devise
+  module Controllers
+    module SignInOut
+      def signed_in?: (?Symbol scope) -> bool
+      def sign_in: (Symbol scope) -> void
+                 | (Staff resource, **untyped options) -> void
+      def bypass_sign_in: (Staff resource, ?scope: Symbol?) -> void
+      def sign_out: (Symbol scope) -> bool
+                  | (Staff resource) -> bool
+      def sign_out_all_scopes: (?bool lock) -> bool
+    end
+  end
+end
+
+module Devise
+  module Helpers
+    include Devise::Controllers::SignInOut
+
+    def authenticate_staff!: (?Hash[untyped, untyped] opts) -> void
+    def staff_signed_in?: () -> bool
+    def current_staff: () -> Staff
+    def staff_session: () -> untyped
+  end
+end
+
+class ActionController::Base
+  include Devise::Helpers
+end

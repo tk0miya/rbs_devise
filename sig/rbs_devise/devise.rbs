@@ -1,0 +1,22 @@
+module  RbsDevise
+  module Devise
+    def self.available?: () -> bool
+    def self.generate: () -> String
+
+    class Generator
+      def generate: () -> String
+
+      private
+
+      def klass_decl: () -> String
+      def sessions_controller_decl: () -> String
+      def devise_controllers_signinout_decl: () -> String
+      def device_helpers_decl: () -> String
+      def device_helpers_methods: () -> String
+      def devise_controller_decl: () -> String
+      def actioncontroller_base_decl: () -> String
+      def parent_controller: () -> String
+      def resource_classes: () -> Array[String]
+    end
+  end
+end
