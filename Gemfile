@@ -10,5 +10,7 @@ gem "rake", "~> 13.0"
 gem "rubocop", "~> 1.21"
 
 group :deveopment do
+  gem "rspec", require: false
+  gem "rspec-daemon", require: false
   gem "steep", require: false
 end
