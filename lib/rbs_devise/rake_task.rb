@@ -30,7 +30,7 @@ module RbsDevise
       task("#{name}:generate": :environment) do
         require "rbs_devise"  # load RbsDevise lazily
 
-        return unless RbsDevise::Devise.available?
+        next unless RbsDevise::Devise.available?
 
         signature_root_dir.mkpath
         (signature_root_dir / "devise.rbs").write RbsDevise::Devise.generate
