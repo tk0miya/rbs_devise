@@ -18,7 +18,6 @@ module  RbsDevise
 
     class Generator
       def generate
-        puts klass_decl
         RbsRails::Util.format_rbs klass_decl
       end
 
