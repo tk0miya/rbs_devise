@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rbs_devise (0.1.0)
+    rbs_devise (0.2.0)
       devise
       rails
       rbs_rails
