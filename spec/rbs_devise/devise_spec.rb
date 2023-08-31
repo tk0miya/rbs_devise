@@ -66,6 +66,10 @@ RSpec.describe RbsDevise::Devise do
               def user_session: () -> untyped
             end
 
+            module Models
+              def devise: (*Symbol) -> void
+            end
+
             class SessionsController < DeviseController
               def sign_in_params: () -> Hash[untyped, untyped]
             end
@@ -82,6 +86,10 @@ RSpec.describe RbsDevise::Devise do
 
           class ActionController::Base
             include Devise::Helpers
+          end
+
+          class ActiveRecord::Base
+            include Devise::Models
           end
         RBS
       end

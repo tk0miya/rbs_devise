@@ -28,11 +28,13 @@ module  RbsDevise
           module Devise
             #{devise_controllers_signinout_decl}
             #{device_helpers_decl}
+            #{device_models_decl}
             #{devise_sessions_controller_decl}
           end
 
           #{devise_controller_decl}
           #{actioncontroller_base_decl}
+          #{activerecord_base_decl}
         RBS
       end
 
@@ -75,6 +77,14 @@ module  RbsDevise
         end.join("\n")
       end
 
+      def device_models_decl
+        <<~RBS
+          module Models
+            def devise: (*Symbol) -> void
+          end
+        RBS
+      end
+
       def devise_sessions_controller_decl
         <<~RBS
           class SessionsController < DeviseController
@@ -100,6 +110,14 @@ module  RbsDevise
         <<~RBS
           class ActionController::Base
             include Devise::Helpers
+          end
+        RBS
+      end
+
+      def activerecord_base_decl
+        <<~RBS
+          class ActiveRecord::Base
+            include Devise::Models
           end
         RBS
       end
