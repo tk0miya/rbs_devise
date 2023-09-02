@@ -9,12 +9,14 @@ module  RbsDevise
       private
 
       def format: (String rbs) -> String
-      def sessions_controller_decl: () -> String
       def devise_controllers_signinout_decl: () -> String
       def device_helpers_decl: () -> String
       def device_helpers_methods: () -> String
+      def device_models_decl: () -> String
       def devise_controller_decl: () -> String
+      def devise_sessions_controller_decl: () -> String
       def actioncontroller_base_decl: () -> String
+      def activerecord_base_decl: () -> String
       def parent_controller: () -> String
       def resource_classes: () -> Array[String]
     end
