@@ -2,7 +2,6 @@
 
 require "devise"
 require "rbs"
-require "rbs_rails"
 
 module  RbsDevise
   module Devise
@@ -18,13 +17,7 @@ module  RbsDevise
 
     class Generator
       def generate
-        RbsRails::Util.format_rbs klass_decl
-      end
-
-      private
-
-      def klass_decl
-        <<~RBS
+        format <<~RBS
           module Devise
             #{devise_controllers_signinout_decl}
             #{device_helpers_decl}
@@ -36,6 +29,15 @@ module  RbsDevise
           #{actioncontroller_base_decl}
           #{activerecord_base_decl}
         RBS
+      end
+
+      private
+
+      def format(rbs)
+        parsed = RBS::Parser.parse_signature(rbs)
+        StringIO.new.tap do |out|
+          RBS::Writer.new(out: out).write(parsed[1] + parsed[2])
+        end.string
       end
 
       def devise_controllers_signinout_decl

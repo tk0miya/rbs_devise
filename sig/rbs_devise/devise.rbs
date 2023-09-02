@@ -8,7 +8,7 @@ module  RbsDevise
 
       private
 
-      def klass_decl: () -> String
+      def format: (String rbs) -> String
       def sessions_controller_decl: () -> String
       def devise_controllers_signinout_decl: () -> String
       def device_helpers_decl: () -> String
