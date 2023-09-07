@@ -89,7 +89,7 @@ RSpec.describe RbsDevise::Devise do
           end
 
           class ActiveRecord::Base
-            include Devise::Models
+            extend Devise::Models
           end
         RBS
       end
