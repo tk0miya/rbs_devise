@@ -119,7 +119,7 @@ module  RbsDevise
       def activerecord_base_decl
         <<~RBS
           class ActiveRecord::Base
-            include Devise::Models
+            extend Devise::Models
           end
         RBS
       end
