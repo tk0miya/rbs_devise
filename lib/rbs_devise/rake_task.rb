@@ -28,7 +28,7 @@ module RbsDevise
     def define_generate_task
       desc "Generate a RBS file for Devise"
       task("#{name}:generate": :environment) do
-        require "rbs_devise"  # load RbsDevise lazily
+        require "rbs_devise" # load RbsDevise lazily
 
         next unless RbsDevise::Devise.available?
 
