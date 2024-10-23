@@ -100,9 +100,9 @@ module  RbsDevise
           class DeviseController < #{parent_controller}
             def find_message: (String | Symbol kind, ?Hash[untyped, untyped] options) -> String
             def navigational_formats: () -> Array[Mime::Type]
-            def resource: () -> #{resource_classes.join(" | ")}
+            def resource: () -> (#{resource_classes.join(" | ")})
             def resource=: #{resource_classes.map { |klass| "(#{klass}) -> #{klass}" }.join(" | ")}
-            def resource_class: () -> #{resource_classes.map { |klass| "singleton(#{klass})" }.join(" | ")}
+            def resource_class: () -> (#{resource_classes.map { |klass| "singleton(#{klass})" }.join(" | ")})
             def resource_name: () -> Symbol
           end
         RBS
