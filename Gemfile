@@ -7,7 +7,7 @@ gemspec
 
 gem "rake", "~> 13.2"
 
-gem "rubocop", "~> 1.69"
+gem "rubocop", "~> 1.70"
 
 group :deveopment do
   gem "rspec", require: false
