@@ -277,6 +277,14 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: pp
+  version: '0'
+  source:
+    type: stdlib
+- name: prettyprint
+  version: '0'
+  source:
+    type: stdlib
 - name: prism
   version: 1.4.0
   source:
