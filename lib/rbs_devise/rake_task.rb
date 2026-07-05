@@ -4,9 +4,12 @@ require "rake/tasklib"
 
 module RbsDevise
   class RakeTask < Rake::TaskLib
-    attr_accessor :name, :signature_root_dir
+    attr_accessor :name #: Symbol
+    attr_accessor :signature_root_dir #: Pathname
 
-    def initialize(name = :"rbs:devise", &block)
+    # @rbs name: Symbol
+    # @rbs &block: (RakeTask) -> void
+    def initialize(name = :"rbs:devise", &block) #: void
       super()
 
       @name = name
@@ -18,14 +21,14 @@ module RbsDevise
       define_setup_task
     end
 
-    def define_setup_task
+    def define_setup_task #: void
       desc "Run all tasks of rbs_devise"
 
       deps = [:"#{name}:generate"]
       task("#{name}:setup" => deps)
     end
 
-    def define_generate_task
+    def define_generate_task #: void
       desc "Generate a RBS file for Devise"
       task("#{name}:generate": :environment) do
         require "rbs_devise" # load RbsDevise lazily

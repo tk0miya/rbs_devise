@@ -5,18 +5,18 @@ require "rbs"
 
 module  RbsDevise
   module Devise
-    def self.available?
+    def self.available? #: bool
       ::Devise.mappings.any?
     end
 
-    def self.generate
+    def self.generate #: String
       raise unless available?
 
       Generator.new.generate
     end
 
     class Generator
-      def generate
+      def generate #: String
         format <<~RBS
           module Devise
             #{devise_controllers_signinout_decl}
@@ -33,14 +33,15 @@ module  RbsDevise
 
       private
 
-      def format(rbs)
+      # @rbs rbs: String
+      def format(rbs) #: String
         parsed = RBS::Parser.parse_signature(rbs)
         StringIO.new.tap do |out|
           RBS::Writer.new(out: out).write(parsed[1] + parsed[2])
         end.string
       end
 
-      def devise_controllers_signinout_decl
+      def devise_controllers_signinout_decl #: String
         resource_type = resource_classes.join(" | ")
         <<~RBS
           module Controllers
@@ -57,7 +58,7 @@ module  RbsDevise
         RBS
       end
 
-      def device_helpers_decl
+      def device_helpers_decl #: String
         <<~RBS
           module Helpers
             include Devise::Controllers::SignInOut
@@ -67,7 +68,7 @@ module  RbsDevise
         RBS
       end
 
-      def device_helpers_methods
+      def device_helpers_methods #: String
         resource_classes.map do |klass_name|
           resource = klass_name.underscore
           <<~RBS.strip
@@ -79,7 +80,7 @@ module  RbsDevise
         end.join("\n")
       end
 
-      def device_models_decl
+      def device_models_decl #: String
         <<~RBS
           module Models
             def devise: (*Symbol) -> void
@@ -87,7 +88,7 @@ module  RbsDevise
         RBS
       end
 
-      def devise_sessions_controller_decl
+      def devise_sessions_controller_decl #: String
         <<~RBS
           class SessionsController < DeviseController
             def sign_in_params: () -> Hash[untyped, untyped]
@@ -95,7 +96,7 @@ module  RbsDevise
         RBS
       end
 
-      def devise_controller_decl
+      def devise_controller_decl #: String
         <<~RBS
           class DeviseController < #{parent_controller}
             def find_message: (String | Symbol kind, ?Hash[untyped, untyped] options) -> String
@@ -108,7 +109,7 @@ module  RbsDevise
         RBS
       end
 
-      def actioncontroller_base_decl
+      def actioncontroller_base_decl #: String
         <<~RBS
           class ActionController::Base
             include Devise::Helpers
@@ -116,7 +117,7 @@ module  RbsDevise
         RBS
       end
 
-      def activerecord_base_decl
+      def activerecord_base_decl #: String
         <<~RBS
           class ActiveRecord::Base
             extend Devise::Models
@@ -124,11 +125,11 @@ module  RbsDevise
         RBS
       end
 
-      def parent_controller
+      def parent_controller #: String
         ::Devise.parent_controller
       end
 
-      def resource_classes
+      def resource_classes #: Array[String]
         ::Devise.mappings.keys.map(&:to_s).map(&:camelcase)
       end
     end
