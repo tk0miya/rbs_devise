@@ -1,6 +1,9 @@
-module  RbsDevise
+# Generated from lib/rbs_devise/devise.rb with RBS::Inline
+
+module RbsDevise
   module Devise
     def self.available?: () -> bool
+
     def self.generate: () -> String
 
     class Generator
@@ -8,16 +11,27 @@ module  RbsDevise
 
       private
 
+      # @rbs rbs: String
       def format: (String rbs) -> String
+
       def devise_controllers_signinout_decl: () -> String
+
       def device_helpers_decl: () -> String
+
       def device_helpers_methods: () -> String
+
       def device_models_decl: () -> String
-      def devise_controller_decl: () -> String
+
       def devise_sessions_controller_decl: () -> String
+
+      def devise_controller_decl: () -> String
+
       def actioncontroller_base_decl: () -> String
+
       def activerecord_base_decl: () -> String
+
       def parent_controller: () -> String
+
       def resource_classes: () -> Array[String]
     end
   end

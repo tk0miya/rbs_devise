@@ -1,0 +1,5 @@
+# Generated from lib/rbs_devise/version.rb with RBS::Inline
+
+module RbsDevise
+  VERSION: ::String
+end
