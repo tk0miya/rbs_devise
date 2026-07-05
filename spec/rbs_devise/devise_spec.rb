@@ -13,33 +13,33 @@ RSpec.describe RbsDevise::Devise do
   describe ".available?" do
     subject { described_class.available? }
 
-    context "When no devise mapping is defined" do
+    context "when no devise mapping is defined" do
       before { allow(Devise).to receive(:mappings).and_return({}) }
 
-      it { is_expected.to eq false }
+      it { is_expected.to be false }
     end
 
-    context "When devise mapping is defined" do
+    context "when devise mapping is defined" do
       before { allow(Devise).to receive(:mappings).and_return({ user: User }) }
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
   end
 
   describe ".generate" do
     subject { described_class.generate }
 
-    context "When no devise mapping is defined" do
+    context "when no devise mapping is defined" do
       before { allow(Devise).to receive(:mappings).and_return({}) }
 
-      it { expect { subject }.to raise_error }
+      it { expect { subject }.to raise_error(RuntimeError) }
     end
 
-    context "When devise mapping is defined" do
+    context "when devise mapping is defined" do
       before { allow(Devise).to receive(:mappings).and_return({ user: User }) }
 
       it "generates RBS" do
-        is_expected.to eq <<~RBS
+        expect(subject).to eq <<~RBS
           module Devise
             module Controllers
               module SignInOut
@@ -98,11 +98,11 @@ RSpec.describe RbsDevise::Devise do
       end
     end
 
-    context "When devise mapping has multiple definitions" do
+    context "when devise mapping has multiple definitions" do
       before { allow(Devise).to receive(:mappings).and_return({ user: User, account: Account }) }
 
       it "generates RBS" do
-        is_expected.to eq <<~RBS
+        expect(subject).to eq <<~RBS
           module Devise
             module Controllers
               module SignInOut

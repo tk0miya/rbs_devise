@@ -5,6 +5,7 @@ plugins:
   - rubocop-numbered-params
   - rubocop-rake
   - rubocop-rbs_inline
+  - rubocop-rspec
 
 Layout/LeadingCommentSpace:
   AllowRBSInlineAnnotation: true
@@ -38,3 +39,9 @@ Layout/LineLength:
 
 Layout/MethodLength:
   Max: 20
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
