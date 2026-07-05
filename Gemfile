@@ -8,6 +8,7 @@ gemspec
 gem "rake", "~> 13.4"
 
 gem "rubocop", "~> 1.88"
+gem "rubocop-numbered-params"
 
 group :deveopment do
   gem "rbs-inline", require: false
