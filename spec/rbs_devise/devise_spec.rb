@@ -3,10 +3,10 @@
 require "devise"
 require "rbs_devise"
 
-class User
+class User # rubocop:disable Lint/EmptyClass
 end
 
-class Account
+class Account # rubocop:disable Lint/EmptyClass
 end
 
 RSpec.describe RbsDevise::Devise do
