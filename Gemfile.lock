@@ -102,6 +102,7 @@ GEM
     drb (2.2.3)
     erb (6.0.7)
     erubi (1.13.1)
+    ffi (1.17.4)
     ffi (1.17.4-arm64-darwin)
     ffi (1.17.4-x86_64-darwin)
     ffi (1.17.4-x86_64-linux-gnu)
@@ -135,6 +136,7 @@ GEM
       net-smtp
     marcel (1.2.1)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.9)
     minitest (6.1.0)
       drb (~> 2.0)
       prism (>= 1.5, < 3)
@@ -148,6 +150,9 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
+    nokogiri (1.19.7)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     nokogiri (1.19.7-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.19.7-x86_64-darwin)
@@ -162,6 +167,7 @@ GEM
     pp (0.6.4)
       prettyprint
     prettyprint (0.2.0)
+    prism (2.1.0)
     prism (2.1.0-arm64-darwin)
     prism (2.1.0-x86_64-darwin)
     prism (2.1.0-x86_64-linux-gnu)
@@ -221,7 +227,7 @@ GEM
       prism (>= 1.6.0)
       rbs (>= 4.0.0)
       tsort
-    regexp_parser (2.13.1)
+    regexp_parser (2.13.4)
     reline (0.7.0)
       io-console (~> 0.5)
     responders (3.2.1)
@@ -242,7 +248,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-support (3.13.7)
-    rubocop (1.92.2)
+    rubocop (1.92.3)
       json (>= 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
